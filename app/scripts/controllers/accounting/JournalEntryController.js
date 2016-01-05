@@ -30,6 +30,36 @@
                 scope.formData.officeId = scope.offices[0].id;
             });
 
+
+            scope.getGroupsInOffice=function(officeId)
+            {
+
+                scope.groups=[];
+                resourceFactory.groupResource.get({officeId:officeId},function (data){
+                    scope.groups=data;
+                    scope.formData.grouopid=scope.groups[0].id;
+                });
+            };
+
+            scope.getClientsInOffice=function(officeId)
+            {
+                //alert(officeId);
+                scope.clients=[];
+                resourceFactory.clientResource.getAllClients({officeId:officeId},function (data){
+                    scope.clients=[];
+                    scope.clients=data.pageItems;
+                    scope.formData.clientId=data.pageItems[0].id;
+                });
+            };
+
+
+
+
+
+
+
+
+
             //events for credits
             scope.addCrAccount = function () {
                 scope.formData.crAccounts.push({});
@@ -91,6 +121,7 @@
                 });
             }
         }
+
     });
     mifosX.ng.application.controller('JournalEntryController', ['$scope', 'ResourceFactory', '$location', 'dateFilter', mifosX.controllers.JournalEntryController]).run(function ($log) {
         $log.info("JournalEntryController initialized");

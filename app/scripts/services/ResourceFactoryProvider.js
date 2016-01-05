@@ -77,7 +77,7 @@
                         get: {method: 'GET', params: {}}
                     }),
                     groupResource: defineResource(apiVer + "/groups/:groupId/:anotherresource", {groupId: '@groupId', anotherresource: '@anotherresource'}, {
-                        get: {method: 'GET', params: {}},
+                        get: {method: 'GET', params: {}, isArray: true},
                         getAllGroups: {method: 'GET', params: {}, isArray: true},
                         update: { method: 'PUT'}
                     }),

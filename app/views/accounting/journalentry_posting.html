@@ -12,10 +12,25 @@
 	            <label class="control-label col-sm-2">{{ 'label.input.office' | translate }}<span class="required">*</span></label>
 	            <div class="col-sm-3">
 	                <select chosen="offices" id="officeId" ng-model="formData.officeId" class="form-control"
-	                        ng-options="office.id as office.name for office in offices" value="{{office.id}}">
+	                        ng-options="office.id as office.name for office in offices" value="{{office.id}}" data-ng-change="getGroupsInOffice(formData.officeId);getClientsInOffice(formData.officeId)">
 	                </select>
 	            </div>
-	            
+
+				<label class="control-label col-sm-2">{{ 'label.input.group' | translate }}<span class="required">*</span></label>
+				<div class="col-sm-3">
+					<select chosen="groups" id="groupId" ng-model="formData.groupId" class="form-control"
+							ng-options="group.id as group.name for group in groups" value="{{group.id}}." >
+					</select>
+				</div>
+                <br>
+				<br>
+				<label class="control-label col-sm-2">{{ 'label.input.client' | translate }}<span class="required">*</span></label>
+				<div class="col-sm-3">
+					<select chosen="clients" id="clientId" ng-model="formData.clientId" class="form-control"
+							ng-options="client.id as client.displayName for client in clients" value="{{client.id}}">
+					</select>
+				</div>
+
 	            <label class="control-label col-sm-2">{{ 'label.input.currency' | translate }}&nbsp;<span
 	                    class="required">*</span></label>
 	            <div class="col-sm-3">
@@ -24,6 +39,7 @@
 	                        value="{{currency.code}}" required>
 	                </select>
 	            </div>
+
 	            <div class="col-sm-2">
 	                <form-validate valattributeform="journalpostingform" valattribute="currency"/>
 	            </div>
